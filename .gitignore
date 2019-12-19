@@ -1,3 +1,7 @@
 # RData #
 *.RData
 *.Rhistory
+
+# large file #
+
+*_wc.csv
