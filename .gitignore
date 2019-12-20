@@ -1,6 +1,6 @@
 # RData #
-*.RData
-*.Rhistory
+recipes_review/*.RData
+recipes_review/*.Rhistory
 
 # large file #
 
