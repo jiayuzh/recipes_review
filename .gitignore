@@ -1,7 +1,12 @@
 # RData #
-recipes_review/*.RData
-recipes_review/*.Rhistory
+recipes_review/.RData
+recipes_review/.Rhistory
+recipes_review/.Rproj.user
+recipes_review/.Ruserdata
+recipes_review/.Rbuildignore
 
 # large file #
 
 *_wc.csv
+
+.gitignore
