@@ -1,14 +1,16 @@
+# use this script to transform tokens to numeric variable (counts of top words)
 import sys
 import csv
 import copy
 
-#filepath = sys.argv[1]
+
 filepath_1 = './tfidf_words.csv'
 filepath_2 = './review_full_tfidf.csv'
 filepath_3 = './review_tfidf_as_variable_comma.csv'
 
 word_count = {}
 
+# input with the top 100 words and make a dict whose keys are those words
 reader = csv.reader(open(filepath_1, 'r'))
 wc_dict = {}
 next(reader)
@@ -16,8 +18,7 @@ for row in reader:
     k, v = row
     wc_dict[k] = 0
 
-print(type(list(wc_dict.keys())[0]))
-
+# input with the tokens and count time when each words appears in each recipes' review
 with open(filepath_2, "r") as fp:
     lines = fp.readlines()
     #print("bug here")
@@ -37,7 +38,8 @@ with open(filepath_2, "r") as fp:
 
 
 
-    
+ # write with numeric variable
+   
 with open(filepath_3, "w+") as fp:
     for key, value in word_count.items():
         word_count[key] = list(value.values())
