@@ -10,3 +10,4 @@ recipes_review/.Rbuildignore
 *_wc.csv
 
 .gitignore
+.Rproj.user
