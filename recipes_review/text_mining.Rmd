@@ -21,20 +21,17 @@ library(wordcloud2)
 library(kableExtra)
 library(tidytext)
 ```
-```{r}
-review_100_orig = read.csv("/Users/Sherry_Se7en/Downloads/food-com-recipes-and-user-interactions/RAW_interactions_100.csv", stringsAsFactors = F)
-review_100 = review_100_orig %>% select(user_id, recipe_id, rating, review)
-mycolors = c("#E69F00", "#56B4E9", "#009E73", "#CC79A7", "#D55E00")
-```
+
 use the full dataset:
 ```{r}
+# this is the output from data_cleaning.py
 good_recipe_id = t(read.table("../output.txt", header = F, sep = ","))
 colnames(good_recipe_id) = "recipe_id"
 good_recipe_id = data.frame(good_recipe_id)
+#this is the input from kaggle.com (RAW_interaction.csv)
 review_orig = read.csv("/Users/Sherry_Se7en/Downloads/food-com-recipes-and-user-interactions/RAW_interactions.csv", 
                        stringsAsFactors = F)
 review_full = review_orig %>% select(user_id, recipe_id, rating, review)
-#try_select = inner_join(review_100, good_recipe_id, by = "recipe_id")
 select_good_recipe = inner_join(review_full, good_recipe_id, by = "recipe_id")
 ```
 
@@ -56,16 +53,7 @@ fix_contractions = function(doc){
   return(doc)
 }
 ```
-```{r}
-review_100$review = sapply(review_100$review, fix_contractions)
 
-#remove_spec_char = function(x) gsub("[^a-zA-Z0-9 ]", " ", x)
-#review_100$review = sapply(review_100$review, remove_spec_char)
-
-review_100$review = sapply(review_100$review, tolower)
-
-
-```
 ```{r}
 #use the full datasets
 select_good_recipe$review = sapply(select_good_recipe$review, fix_contractions)
